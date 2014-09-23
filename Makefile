@@ -3,4 +3,7 @@ install:
 	@npm install
 	@./node_modules/.bin/bower install
 
-.PHONY: install
+server:
+	@./node_modules/.bin/grunt server
+
+.PHONY: install, server

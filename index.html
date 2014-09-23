@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="testApp">
 <head>
   <meta charset="utf-8">
   <title>Rokker aNGular test</title>
 </head>
-<body ng-app="testApp">
+<body>
   <h1>what to wear for the weather</h1>
-  <div id="container"/>
-  
+  <div id="container">
+    <div ng-view></div>
+  </div>
   <script type="text/ng-template" id="/weather-find.html">
     <h2>{{ status.name }}</h2>
     <h2>{{ status.weather[0].description }}</h2>
     <h2>{{ status.main.temp | k2f }}</h2>
 
-    <form ng-hide="status" ng-submit="{{searchWeather()}}">
+    <form ng-hide="status" ng-submit="searchWeather()">
       Enter a City Name
       <input placeholder="Enter City" ng-model="cityName" autofocus>
     </form>
 
-    <form ng-show="items" ng-submit="{{addItem()}}">
+    <form ng-show="status" ng-submit="addItem()">
       What to Wear?
-      <span item-thing></span>
+      <item-thing></item-thing>
     </form>
 
-    <div ng-repeat="items as item"> {{ item }} </div>
+    <div ng-repeat="item in items"> {{ item.name }} </div>
 
     <h2 ng-show="items.length > 1"> Bring {{ items.length }} items! </h2>
   </script>
@@ -31,6 +32,14 @@
   <script src="/bower_components/angular-route/angular-route.js"></script>
   <script src="/bower_components/underscore/underscore.js"></script>
   <script src="/bower_components/angular-underscore/angular-underscore.js"></script>
-  <script src="app.js"></script>
+  <script src="/bower_components/d3/d3.js"></script>
+  <script src="/app/app.js"></script>
+  <script src="/app/controllers/MainManager.js"></script>
+  <script src="/app/controllers/RokkCtrl.js"></script>
+  <script src="/app/directives/itemThing.js"></script>
+  <script src="/app/filters/k2f.js"></script>
+  <script src="/app/services/item.js"></script>
+  <script src="/app/services/weatherMap.js"></script>
+  <script src="/app/services/weatherService.js"></script>
 </body>
 </html>

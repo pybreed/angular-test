@@ -5,6 +5,7 @@
     "angular": "~1.2.25",
     "angular-route": "~1.2.25",
     "underscore": "~1.7.0",
-    "angular-underscore": "*"
+    "angular-underscore": "*",
+    "d3": "~3.4.11"
   }
 }
